@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ดูรูปของคุณ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('kkii.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Prompt', sans-serif;
+        }
+        #container {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 80%;
+            width: 90%;
+            margin: auto;
+        }
+        #imageSection {
+            display: none;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 18px;
+            border-radius: 5px;
+            border: none;
+            width: 100%;
+            max-width: 300px;
+        }
+        button {
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .user-image {
+          max-width: 200px; /* ปรับขนาดภาพสูงสุดเป็น 200px */
+          border-radius: 50%;
+          margin-top: 20px;
+         display: block;
+         margin-left: auto;
+           margin-right: auto;
+        }
+
+        @media (max-width: 768px) {
+            #container {
+                padding: 15px;
+            }
+            input, button {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1 id="welcomeMessage">ยินดีต้อนรับ! กรุณากรอกชื่อของคุณ</h1>
+        <form id="nameForm">
+            <label for="name">ชื่อ:</label>
+            <input type="text" id="name" name="name" required>
+            <button type="submit">ดูรูปภาพของคุณ</button>
+        </form>
+        
+        <div id="imageSection">
+            <h1 id="greeting"></h1>
+            <img src="seal.jpg" alt="รูป Seal" class="user-image" id="user-image-seal">
+            <img src="wanida.jpg" alt="รูป กล้วย" class="user-image" id="user-image-banana">
+            <img src="santi.jpg" alt="รูป สันติ" class="user-image" id="user-image-santi">
+            <img src="koh.jpg" alt="รูป โก้" class="user-image" id="user-image-koko">
+            <img src="mint.jpg" alt="รูป Mint" class="user-image" id="user-image-mint">
+            <img src="fon.jpg" alt="รูป Fon" class="user-image" id="user-image-fon">
+            <br>
+            <button onclick="backToForm()">กลับไปกรอกชื่อ</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('nameForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value.toLowerCase();
+            const greetingElement = document.getElementById('greeting');
+            const userImageSeal = document.getElementById('user-image-seal');
+            const userImageBanana = document.getElementById('user-image-banana');
+            const userImageSanti = document.getElementById('user-image-santi');
+            const userImageKoko = document.getElementById('user-image-koko');
+            const userImageMint = document.getElementById('user-image-mint');
+            const userImageFon = document.getElementById('user-image-fon');
+            
+            if (name === 'seal' || name === 'ซีน') {
+                greetingElement.innerText = 'สวัสดี, Seal! นี่คือรูปของคุณ Seal คั้บบ:';
+                userImageSeal.style.display = 'block';
+                userImageBanana.style.display = 'none';
+                userImageSanti.style.display = 'none';
+                userImageKoko.style.display = 'none';
+                userImageMint.style.display = 'none';
+                userImageFon.style.display = 'none';
+            } else if (name === 'กล้วย' || name === 'banana' || name === 'wanida') {
+                greetingElement.innerText = 'สวัสดี, กล้วย! นี่คือรูปของคุณ กล้วย คั้บบ:';
+                userImageSeal.style.display = 'none';
+                userImageBanana.style.display = 'block';
+                userImageSanti.style.display = 'none';
+                userImageKoko.style.display = 'none';
+                userImageMint.style.display = 'none';
+                userImageFon.style.display = 'none';
+            } else if (name === 'สันติ' || name === 'santi') {
+                greetingElement.innerText = 'สวัสดี, สันติ! นี่คือรูปของคุณ สันติ คั้บบ:';
+                userImageSeal.style.display = 'none';
+                userImageBanana.style.display = 'none';
+                userImageSanti.style.display = 'block';
+                userImageKoko.style.display = 'none';
+                userImageMint.style.display = 'none';
+                userImageFon.style.display = 'none';
+            } else if (name === 'โก้' || name === 'koko') {
+                greetingElement.innerText = 'สวัสดี, โก้! นี่คือรูปของคุณ โก้ คั้บบ:';
+                userImageSeal.style.display = 'none';
+                userImageBanana.style.display = 'none';
+                userImageSanti.style.display = 'none';
+                userImageKoko.style.display = 'block';
+                userImageMint.style.display = 'none';
+                userImageFon.style.display = 'none';
+            } else if (name === 'mint' || name === 'มิ้น') {
+                greetingElement.innerText = 'สวัสดี, Mint! นี่คือรูปของคุณ Mint คั้บบ:';
+                userImageSeal.style.display = 'none';
+                userImageBanana.style.display = 'none';
+                userImageSanti.style.display = 'none';
+                userImageKoko.style.display = 'none';
+                userImageMint.style.display = 'block';
+                userImageFon.style.display = 'none';
+            } else if (name === 'fon' || name === 'ฝน') {
+                greetingElement.innerText = 'สวัสดี, Fon! นี่คือรูปของคุณ Fon คั้บบ:';
+                userImageSeal.style.display = 'none';
+                userImageBanana.style.display = 'none';
+                userImageSanti.style.display = 'none';
+                userImageKoko.style.display = 'none';
+                userImageMint.style.display = 'none';
+                userImageFon.style.display = 'block';
+            } else {
+                greetingElement.innerText = `สวัสดี, ${name}! ขออภัย ไม่มีรูปของคุณในรายการ`;
+                userImageSeal.style.display = 'none';
+                userImageBanana.style.display = 'none';
+                userImageSanti.style.display = 'none';
+                userImageKoko.style.display = 'none';
+                userImageMint.style.display = 'none';
+                userImageFon.style.display = 'none';
+            }
+            
+            document.getElementById('imageSection').style.display = 'block';
+            document.getElementById('nameForm').style.display = 'none';
+            document.getElementById('welcomeMessage').style.display = 'none';
+        });
+
+        function backToForm() {
+            document.getElementById('nameForm').reset();
+            document.getElementById('nameForm').style.display = 'block';
+            document.getElementById('imageSection').style.display = 'none';
+            document.getElementById('welcomeMessage').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
+
